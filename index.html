@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Creator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f1f5f8;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4e73df;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .form-group input[type="submit"] {
+            background-color: #4e73df;
+            color: white;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        .form-group input[type="submit"]:hover {
+            background-color: #2e59d9;
+        }
+
+        .preview {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f7f7f7;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .preview h2 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .preview p {
+            margin: 8px 0;
+        }
+
+        .preview .name {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #4e73df;
+        }
+
+        .preview .role {
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        .preview .section-title {
+            font-size: 1.4rem;
+            color: #4e73df;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .preview .details {
+            font-size: 1rem;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Resume Creator</h1>
+
+        <!-- Resume Form -->
+        <form id="resumeForm">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" placeholder="John Doe" required>
+            </div>
+
+            <div class="form-group">
+                <label for="role">Desired Role</label>
+                <input type="text" id="role" placeholder="Software Engineer" required>
+            </div>
+
+            <div class="form-group">
+                <label for="experience">Experience</label>
+                <textarea id="experience" placeholder="Describe your work experience..." rows="5" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="education">Education</label>
+                <textarea id="education" placeholder="Your educational background..." rows="5" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Generate Resume">
+            </div>
+        </form>
+
+        <!-- Resume Preview -->
+        <div class="preview" id="resumePreview">
+            <h2>Resume Preview</h2>
+            <div class="name" id="previewName"></div>
+            <div class="role" id="previewRole"></div>
+            <div class="section-title">Experience</div>
+            <div class="details" id="previewExperience"></div>
+            <div class="section-title">Education</div>
+            <div class="details" id="previewEducation"></div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('resumeForm');
+        const resumePreview = document.getElementById('resumePreview');
+        const previewName = document.getElementById('previewName');
+        const previewRole = document.getElementById('previewRole');
+        const previewExperience = document.getElementById('previewExperience');
+        const previewEducation = document.getElementById('previewEducation');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Get user input values
+            const name = document.getElementById('name').value;
+            const role = document.getElementById('role').value;
+            const experience = document.getElementById('experience').value;
+            const education = document.getElementById('education').value;
+
+            // Display the resume preview
+            previewName.textContent = name;
+            previewRole.textContent = `Role: ${role}`;
+            previewExperience.textContent = experience;
+            previewEducation.textContent = education;
+
+            // Show the preview section
+            resumePreview.style.display = 'block';
+        });
+    </script>
+
+</body>
+</html>
